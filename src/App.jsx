@@ -1,11 +1,12 @@
 import './App.css'
+import Main from './components/Main/Main'
 
 function App() {
  
 
   return (
     <>
-      <p className="text-5xl">shj</p>
+     <Main/>
     </>
   )
 }

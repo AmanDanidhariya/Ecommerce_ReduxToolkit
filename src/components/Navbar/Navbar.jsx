@@ -1,4 +1,3 @@
-import React from "react";
 import logo from "../../assets/images/logo.png";
 const Navbar = () => {
   return (
@@ -8,9 +7,9 @@ const Navbar = () => {
           Welcome ALL
         </h3>
       </div>
-      <div className="flex justify-around items-center font-bold ">
+      <div className="flex justify-around items-center font-bold cursor-pointer">
         <div>
-          <img className="h-28 w-full " src={logo} alt=""></img>
+          <img className="h-28 w-full " src={logo} alt="brandLogo"></img>
         </div>
         <div className="flex flex-row gap-2 items-center">
           <button className="font-inter text-base font-bold tracking-normal leading-none text-center mr-4">

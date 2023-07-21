@@ -136,6 +136,8 @@ const SingleProduct = () => {
                         name: item.name,
                         size: size,
                         color: color,
+                        img: item.img,
+                        text: item.text,
                       }))}
                     >
                       Add to Cart

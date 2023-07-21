@@ -29,8 +29,10 @@ export const cartSlice = createSlice({
                             price:productId.price,
                             size: productId.size,
                             amount: 1,
+                            img:productId.img,
                             totalPrice: productId.price,
                             name: productId.name,
+                            text: productId.text,
                             color: productId.color,
                         });
                         state.totalAmount++;

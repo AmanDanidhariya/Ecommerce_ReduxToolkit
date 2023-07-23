@@ -7,11 +7,13 @@ import {
 } from "@material-tailwind/react";
 import { Tooltip } from "@material-tailwind/react";
 import { useDispatch, useSelector } from "react-redux";
+import { removeFromCart } from "../../features/slices/cartSlices";
 
 const Cart = ({ openModel, setOpen }) => {
   const cart = useSelector((state) => state.cart.cart);
   const totalPrice = useSelector((state) => state.cart.totalPrice);
 
+  const dispatch = useDispatch();
   return (
     <div>
       {cart.length > 0 ? (
@@ -81,6 +83,7 @@ const Cart = ({ openModel, setOpen }) => {
                             <Button
                               size="sm"
                               color="red"
+                              onClick={()=>dispatch(removeFromCart(item))}
                               ripple={true}
                               variant="filled"
                             >

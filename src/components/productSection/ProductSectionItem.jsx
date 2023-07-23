@@ -5,8 +5,6 @@ import {
   CardBody,
   CardFooter,
   Typography,
-  Input,
-  Checkbox,
   Button,
   Tooltip,
 } from "@material-tailwind/react";

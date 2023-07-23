@@ -1,6 +1,6 @@
 import { useState } from "react";
 import logo from "../../assets/images/logo.png";
-import Cart from "../Cart/cart";
+import Cart from "../Cart/Cart";
 import { useSelector } from "react-redux";
 
 const Navbar = () => {

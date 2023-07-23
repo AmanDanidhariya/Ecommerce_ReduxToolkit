@@ -9,8 +9,6 @@ export const sliderSlice = createSlice({
     },
     reducers:{
          nextSlide(state, action){
-            console.log("action", action);
-            console.log("state", state);
             //slider reached to state.length in that case slide set to the 0th indicating first slide
             //otherwise slider can proceed to the next slide
             state.value = action.payload > state.length -1 ? 0 : action.payload;

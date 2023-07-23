@@ -10,9 +10,9 @@ const FilteredProducts = () => {
   console.log("params", type);
   return (
     <div>
-      <div className="pt-16">
-        <div className="pl-14">
-          <h1 className="text-4xl text-gray-600 font-bold tracking-normal leading-none ">
+      <div className="pt-6">
+        <div className="p-8 bg-blue-gray-300 mb-4">
+          <h1 className="text-4xl text-center text-white font-bold tracking-normal leading-none">
             {type}
           </h1>
         </div>

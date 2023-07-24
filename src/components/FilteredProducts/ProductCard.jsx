@@ -12,11 +12,13 @@ import { Link, useParams } from "react-router-dom";
 const ProductCard = ({ id, name, text, img, price, colors }) => {
   const dispatch = useDispatch();
   const { type } = useParams();
-console.log(colors);
 
   return (
     <Link to={`/filteredProducts/${type}/` + id}>
-      <Card className="w-80 bg-blue-gray-100" onClick={() => dispatch(singleProduct(id))}>
+      <Card
+        className="w-80 bg-blue-gray-100"
+        onClick={() => dispatch(singleProduct(id))}
+      >
         <CardHeader color="blue" className="relative h-96">
           <img src={img} alt={name} className="h-full w-full" />
         </CardHeader>
@@ -27,7 +29,9 @@ console.log(colors);
           <Typography>{text}</Typography>
         </CardBody>
         <CardFooter divider className="flex items-center justify-between py-3">
-          <Typography className="font-bold text-2xl" variant="small">{price}$</Typography>
+          <Typography className="font-bold text-2xl" variant="small">
+            {price}$
+          </Typography>
           <Typography variant="small" color="gray" className="flex gap-1">
             {colors?.map((color, index) => {
               return (

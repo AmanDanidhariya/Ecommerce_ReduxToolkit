@@ -2,7 +2,7 @@ import { useState } from "react";
 import logo from "../../assets/images/logo.png";
 import Cart from "../Cart/Cart";
 import { useSelector, useDispatch } from "react-redux";
-import { Avatar, Tooltip, Button } from "@material-tailwind/react";
+import { Avatar} from "@material-tailwind/react";
 import { logout } from "../../features/slices/authSlice";
 
 const Navbar = () => {
@@ -93,11 +93,9 @@ const Navbar = () => {
               <Avatar src={image} alt="Avatar" size="sm" className="mr-2" />
             )}
             <div>
-              <Tooltip>
                 <p className="text-sm font-bold text-medium tracking-normal leading-none">
                   Hi {name.charAt("0").toUpperCase() + name.slice(1)}
                 </p>
-              </Tooltip>
             </div>
           </div>
         </div>

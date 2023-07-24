@@ -32,7 +32,7 @@ console.log(colors);
             {colors?.map((color, index) => {
               return (
                 <i
-                  className="fas fa-map-marker-alt fa-sm mt-[3px] rounded-full mr-4"
+                  className="fas w-3 h-3 fa-map-marker-alt fa-sm mt-[3px] rounded-full mr-4"
                   key={index}
                   style={{ backgroundColor: color }}
                 ></i>

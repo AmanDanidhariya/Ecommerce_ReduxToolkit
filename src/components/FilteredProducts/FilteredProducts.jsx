@@ -8,10 +8,11 @@ const FilteredProducts = () => {
   console.log("products", products);
   const { type } = useParams();
   console.log("params", type);
+  
   return (
     <div>
-      <div className="pt-6">
-        <div className="p-8 bg-blue-gray-300 mb-4">
+      <div className="pt-6 overflow-x-hidden">
+        <div className="p-8 bg-blue-gray-300  mb-4">
           <h1 className="text-4xl text-center text-white font-bold tracking-normal leading-none">
             {type}
           </h1>
@@ -28,7 +29,7 @@ const FilteredProducts = () => {
                     text={product.text}
                     img={product.img}
                     price={product.price}
-                    color={product.color}
+                    colors={product.color}
                   ></ProductCard>
                 </div>
               );

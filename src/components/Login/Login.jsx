@@ -64,9 +64,6 @@ const Login = () => {
             value={values.image}
             onChange={onChange}
           />
-          <div className="-ml-2.5">
-            <Checkbox label="Remember Me" />
-          </div>
         </CardBody>
         <CardFooter className="pt-0">
           <Button variant="gradient" fullWidth onClick={()=>dispatch(login(values))}>

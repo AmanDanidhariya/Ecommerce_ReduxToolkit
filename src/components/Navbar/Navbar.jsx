@@ -90,7 +90,7 @@ const Navbar = () => {
           </div>
           <div className="flex flex-row items-center cursor-pointer pt-4 px-3 py-2">
             {image && (
-              <Avatar src={image} alt="Avatar" size="sm" className="mr-2" />
+              <Avatar src={image} alt="Avatar" size="medium" className="mr-2" />
             )}
             <div>
                 <p className="text-sm font-bold text-medium tracking-normal leading-none">
@@ -101,13 +101,13 @@ const Navbar = () => {
         </div>
       </div>
       <div className="bg-black p-4 flex w-full justify-around">
-        <div className="text-white font-inter text-base font-bold tracking-normal leading-none text-center mr-2 mt-1">
+        <div className="text-white font-inter text-base font-bold tracking-normal leading-none text-center mr-2 mt-1 cursor-pointer">
           50% Off
         </div>
-        <div className="text-white font-inter text-base font-bold tracking-normal leading-none text-center mr-2 mt-1">
+        <div className="text-white font-inter text-base font-bold tracking-normal leading-none text-center mr-2 mt-1 cursor-pointer">
           Free shipping and returns
         </div>
-        <div className="text-white font-inter text-base font-bold tracking-normal leading-none text-center mr-2 mt-1">
+        <div className="text-white font-inter text-base font-bold tracking-normal leading-none text-center mr-2 mt-1 cursor-pointer">
           Different payment method
         </div>
       </div>

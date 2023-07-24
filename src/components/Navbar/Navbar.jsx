@@ -1,15 +1,21 @@
 import { useState } from "react";
 import logo from "../../assets/images/logo.png";
 import Cart from "../Cart/Cart";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { Avatar, Tooltip, Button } from "@material-tailwind/react";
+import { logout } from "../../features/slices/authSlice";
 
 const Navbar = () => {
   const totalAmount = useSelector((state) => state.cart.totalAmount);
+  const user = useSelector((state) => state.user.user);
+  const { name, image } = user;
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => {
     setOpen(true);
   };
+
+  const dispatch = useDispatch();
   return (
     <>
       <div className="bg-black p-2 w-full">
@@ -21,18 +27,23 @@ const Navbar = () => {
         <div>
           <img className="h-28 w-full " src={logo} alt="brandLogo"></img>
         </div>
-        <div className="flex flex-row gap-2 items-center">
-          <button className="font-inter text-base font-bold tracking-normal leading-none text-center mr-4">
+        <div className="flex flex-row gap-2 items-center ">
+          <button
+            className="font-inter text-base font-bold tracking-normal leading-none text-center mr-4 px-3 py-3 hover:bg-red-100 rounded transition ease-in-out delay-100"
+            onClick={() => {
+              dispatch(logout());
+            }}
+          >
             Logout
           </button>
-          <div className="flex flex-row text-center">
+          <div className="flex flex-row text-center px-3 py-2 hover:bg-red-100 rounded hover:bg-red-100 rounded transition ease-in-out delay-100">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
               strokeWidth="2"
               stroke="#000"
-              className="w-6 h-6"
+              className="w-6 h-6 "
             >
               <path
                 strokeLinecap="round"
@@ -45,10 +56,10 @@ const Navbar = () => {
             </p>
           </div>
           <div
-            className="flex flex-row items-center cursor-pointer"
+            className="flex flex-row items-center cursor-pointer px-3 py-2 hover:bg-red-100 rounded hover:bg-red-100 rounded transition ease-in-out delay-100"
             onClick={handleOpen}
           >
-          {/* if, there is no totalAmount , showing a bag */}
+            {/* if, there is no totalAmount , showing a bag */}
             {totalAmount > 0 ? (
               <span className="rounded-full bg-gray-300 px-2 text-sm mr-1">
                 {totalAmount}
@@ -75,6 +86,18 @@ const Navbar = () => {
             </p>
             <div>
               {open && <Cart openModel={open} setOpen={setOpen}></Cart>}
+            </div>
+          </div>
+          <div className="flex flex-row items-center cursor-pointer pt-4 px-3 py-2">
+            {image && (
+              <Avatar src={image} alt="Avatar" size="sm" className="mr-2" />
+            )}
+            <div>
+              <Tooltip>
+                <p className="text-sm font-bold text-medium tracking-normal leading-none">
+                  Hi {name.charAt("0").toUpperCase() + name.slice(1)}
+                </p>
+              </Tooltip>
             </div>
           </div>
         </div>

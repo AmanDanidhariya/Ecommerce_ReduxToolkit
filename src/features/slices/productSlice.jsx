@@ -56,13 +56,13 @@ export const productSlice = createSlice({
           sessionStorage.setItem("filteredData", saveState);
         } else {
           state.error = true;
-          state.filterProducts = [];
+          state.filteredProducts = [];
         }
       } catch (err) {
         return err;
       }
     },
-    sortByPrice(state, action) {
+    sortByPrice(state) {
       try {
         const price = state.filteredProducts.sort((a, b) => {
           return a.price > b.price ? -1 : 1;
@@ -79,7 +79,7 @@ export const productSlice = createSlice({
           }
         } else {
           state.error = true;
-          state.filterProducts = [];
+          state.filteredProducts = [];
         }
       } catch (err) {
         return err;

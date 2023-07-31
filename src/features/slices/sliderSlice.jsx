@@ -4,7 +4,7 @@ import {sliderData} from "../../assets/data/dummyData"
 export const sliderSlice = createSlice({
     name: "slider",
     initialState :{
-        value: 0,   
+        value: 1,   
         length:sliderData.length,
     },
     reducers:{

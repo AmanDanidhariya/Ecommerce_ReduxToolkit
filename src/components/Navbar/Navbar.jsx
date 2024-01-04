@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import logo from "../../assets/images/logo.png";
 import Cart from "../Cart/Cart";
 import { useSelector, useDispatch } from "react-redux";
-import { Avatar} from "@material-tailwind/react";
+import { Avatar } from "@material-tailwind/react";
 import { logout } from "../../features/slices/authSlice";
 
 const Navbar = () => {
@@ -14,7 +14,15 @@ const Navbar = () => {
   const handleOpen = () => {
     setOpen(true);
   };
-
+ 
+//handle close button
+  const handleClose = () => {
+    setOpen(false);
+    console.log("false", open, setOpen);
+  };
+  useEffect(() => {
+    console.log("open cart", open);
+  }, [open]);
   const dispatch = useDispatch();
   return (
     <>
@@ -36,7 +44,10 @@ const Navbar = () => {
           >
             Logout
           </button>
-          <div className="flex flex-row text-center px-3 py-2 hover:bg-red-100 rounded hover:bg-red-100 rounded transition ease-in-out delay-100">
+          <div
+            className="flex flex-row text-center px-3 py-2 hover:bg-red-100 rounded transition ease-in-out delay-100"
+            onClick={handleOpen} 
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -54,9 +65,19 @@ const Navbar = () => {
             <p className="font-inter text-base font-bold tracking-normal leading-none text-center mr-2 mt-1">
               Wish List
             </p>
+            {/* model for wishList */}
+            <div>
+              {open && (
+                <Cart
+                  openModel={open}
+                  setOpen={setOpen}
+                  handleClose={handleClose}
+                ></Cart>
+              )}
+            </div>
           </div>
           <div
-            className="flex flex-row items-center cursor-pointer px-3 py-2 hover:bg-red-100 rounded hover:bg-red-100 rounded transition ease-in-out delay-100"
+            className="flex flex-row items-center cursor-pointer px-3 py-2 hover:bg-red-100 rounded transition ease-in-out delay-100"
             onClick={handleOpen}
           >
             {/* if, there is no totalAmount , showing a bag */}
@@ -85,7 +106,13 @@ const Navbar = () => {
               Shopping bag
             </p>
             <div>
-              {open && <Cart openModel={open} setOpen={setOpen}></Cart>}
+              {open && (
+                <Cart
+                  openModel={open}
+                  setOpen={setOpen}
+                  // handleClose={handleClose}
+                ></Cart>
+              )}
             </div>
           </div>
           <div className="flex flex-row items-center cursor-pointer pt-4 px-3 py-2">
@@ -93,9 +120,9 @@ const Navbar = () => {
               <Avatar src={image} alt="Avatar" size="medium" className="mr-2" />
             )}
             <div>
-                <p className="text-sm font-bold text-medium tracking-normal leading-none">
-                  Hi {name.charAt("0").toUpperCase() + name.slice(1)}
-                </p>
+              <p className="text-sm font-bold text-medium tracking-normal leading-none">
+                Hi {name.charAt("0").toUpperCase() + name.slice(1)}
+              </p>
             </div>
           </div>
         </div>

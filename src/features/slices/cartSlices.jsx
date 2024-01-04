@@ -43,6 +43,7 @@ export const cartSlice = createSlice({
       }
     },
     removeFromCart(state, action) {
+      console.log("inside removeFromCart");
       const productId = action.payload;
       try {
         const exist = state.cart.find(
@@ -53,12 +54,13 @@ export const cartSlice = createSlice({
         );
         if (exist.amount === 1) {
           //remove item from cart
-          state.cart =
-            state.cart.filter(
-              (product) =>
-                product.id !== productId.id ||
-                product.size !== productId.size ||
-                product.color !== productId.color);
+          state.cart = state.cart.filter(
+            (product) =>
+              product.id !== productId.id ||
+              product.size !== productId.size ||
+              product.color !== productId.color
+          );
+          console.log(state.cart);
           //decreasing amount when remove item from cart
           state.totalAmount--;
           state.totalPrice -= productId.price;

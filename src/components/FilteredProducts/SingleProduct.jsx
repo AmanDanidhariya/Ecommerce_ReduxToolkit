@@ -4,9 +4,9 @@ import { useParams } from "react-router-dom";
 import { Tooltip, Button } from "@material-tailwind/react";
 import { addToCart } from "../../features/slices/cartSlices";
 import { useDispatch } from "react-redux";
+import HeartSvg from "../Heart/HeartSvg";
 
 const SingleProduct = () => {
-
   const product = useSelector((state) => state.products.singleProduct);
   //by Default first value of size array
   const productSize = product[0].size ? product[0].size[0] : "";
@@ -16,7 +16,7 @@ const SingleProduct = () => {
   const [color, setColor] = useState(productColor);
 
   const { id } = useParams();
-  const dispatch= useDispatch();
+  const dispatch = useDispatch();
 
   return (
     <div>
@@ -25,7 +25,8 @@ const SingleProduct = () => {
         .map((item, index) => {
           return (
             <div key={index} className="flex justify-center items-center py-10">
-              <div className="pl-44 grow-[2]">
+              <div className="pl-44 grow-[2] relative">
+                <HeartSvg left={535} />
                 <img
                   className="h-[600px] rounded-lg "
                   src={item.img}
@@ -128,17 +129,21 @@ const SingleProduct = () => {
                       size="lg"
                       variant="outlined"
                       ripple={true}
-                      onClick={()=>dispatch(addToCart({
-                        id:item.id,
-                        price: item.price,
-                        amount: 1,
-                        totalPrice: item.price,
-                        name: item.name,
-                        size: size,
-                        color: color,
-                        img: item.img,
-                        text: item.text,
-                      }))}
+                      onClick={() =>
+                        dispatch(
+                          addToCart({
+                            id: item.id,
+                            price: item.price,
+                            amount: 1,
+                            totalPrice: item.price,
+                            name: item.name,
+                            size: size,
+                            color: color,
+                            img: item.img,
+                            text: item.text,
+                          })
+                        )
+                      }
                     >
                       Add to Cart
                     </Button>

@@ -8,10 +8,19 @@ import {
 import { Tooltip } from "@material-tailwind/react";
 import { useDispatch, useSelector } from "react-redux";
 import { removeFromCart } from "../../features/slices/cartSlices";
+import { useState } from "react";
 
-const Cart = ({ openModel, setOpen }) => {
+// eslint-disable-next-line react/prop-types
+export const Cart = ({ openModel, setOpen }) => {
+  // const [modelClose, setModelClose] = useState(false);
   const cart = useSelector((state) => state.cart.cart);
   const totalPrice = useSelector((state) => state.cart.totalPrice);
+
+  
+  // const handleClose = () =>{
+  //   console.log('setOpen', setOpen);
+  //   setOpen(false);
+  // }
 
   const dispatch = useDispatch();
   return (
@@ -19,15 +28,48 @@ const Cart = ({ openModel, setOpen }) => {
       {cart.length > 0 ? (
         <div>
           <Dialog
-            className="border-0 outline-0 max-h-[80%] overflow-auto rounded-none"
+            className="border-0 outline-0 max-h-[80%] overflow-auto rounded-none relative"
             open={openModel}
-            handler={() => setOpen(false)}
             animate={{
               mount: { scale: 1, y: 0 },
               unmount: { scale: 0.9, y: -100 },
             }}
           >
-            <DialogHeader>Shopping Bag</DialogHeader>
+            <DialogHeader className="-z-50 w-[60%]">Shopping Bag</DialogHeader>
+            {/* closeButton start */}
+
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="filled"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="w-8 h-8 absolute top-2 right-2  cursor-pointer z-50"
+              //onclick model value change to false 
+              onClick={handleClose}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+    
+            {/* <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              className="w-8 h-8 absolute top-2 right-2  cursor-pointer"
+              onClick={()=>setOpen(false)}
+            >
+              <path
+                fillRule="evenodd"
+                d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-1.72 6.97a.75.75 0 10-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 101.06 1.06L12 13.06l1.72 1.72a.75.75 0 101.06-1.06L13.06 12l1.72-1.72a.75.75 0 10-1.06-1.06L12 10.94l-1.72-1.72z"
+                clipRule="evenodd"
+              />
+            </svg> */}
+
+            {/* closeButton End */}
             <DialogBody
               divider
               className="flex flex-col justify-center items-start"
@@ -83,7 +125,9 @@ const Cart = ({ openModel, setOpen }) => {
                             <Button
                               size="sm"
                               color="red"
-                              onClick={()=>dispatch(removeFromCart(item))}
+                              onClick={() => {
+                                dispatch(removeFromCart(item));
+                              }}
                               ripple={true}
                               variant="filled"
                             >

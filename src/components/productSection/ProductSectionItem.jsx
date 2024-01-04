@@ -11,6 +11,7 @@ import {
 
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../features/slices/cartSlices"
+import HeartSvg from "../Heart/HeartSvg";
 
 const ProductSectionItem = ({
   id,
@@ -30,6 +31,10 @@ const ProductSectionItem = ({
     <div>
       <Card className="w-96">
         <CardHeader floated={false} className="h-96">
+        <Typography className="relative">
+          {/* heart svg */}
+          <HeartSvg/>
+          </Typography>
           <img src={img} alt={name} />
         </CardHeader>
         <CardBody className="text-center">
